@@ -17,6 +17,12 @@ spring:
             - Path=/user/** # 路由规则
           filters:
             - StripPrefix=1
+        - id: guard
+          uri: http://localhost:8003/guard
+          predicates:
+            - Path=/guard/** # 路由规则
+          filters:
+            - StripPrefix=1
 
 server:
   port: 8001

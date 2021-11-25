@@ -16,8 +16,8 @@ public class UserController {
 
     @GetMapping(value = {"/info"}, produces = {"application/json;charset=utf-8"})
     @ResponseBody
-    public String test() {
-       return "info success!";
+    public String listUsersByIds() {
+       return "from user module info success!";
     }
 
 }
