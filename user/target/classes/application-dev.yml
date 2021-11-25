@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: user
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+
+server:
+  port: 8002
+  servlet:
+    context-path: /user
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+    status-page-url-path: /actuator/info
+    health-check-url-path: /actuator/health
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    prefer-same-zone-eureka: true
+    service-url:
+      defaultZone: http://localhost:8000/iserver/eureka/
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000  #发生熔断的超时时间
+          semaphore:
+            maxConcurrentRequests: 5000     #信号量大小
+          #strategy: SEMAPHORE                #隔离策略
+        circuitBreaker:
+            sleepWindowInMilliseconds:  5000   #短路多久以后开始尝试是否恢复
