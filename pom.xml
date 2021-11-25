@@ -11,6 +11,7 @@
         <module>gateway</module>
         <module>iserver</module>
         <module>user</module>
+        <module>guard</module>
     </modules>
     <packaging>pom</packaging>
 

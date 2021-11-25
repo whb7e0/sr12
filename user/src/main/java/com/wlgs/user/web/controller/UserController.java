@@ -19,4 +19,7 @@ public class UserController {
     public String test() {
        return "info success!";
     }
+
 }
+
+
